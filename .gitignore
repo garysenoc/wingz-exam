@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+bin/
+lib/
+include/
+pyvenv.cfg
+
+# Django
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing / Coverage
+.pytest_cache/
+htmlcov/
+.coverage
+test_report.html
+
+# mypy
+.mypy_cache/
+
+# ruff
+.ruff_cache/
+
+# pre-commit
+.pre-commit-config.yaml is tracked, but its cache is not
+# (the comment above is just a note — .pre-commit-config.yaml should be committed)
+
+# OS
+.DS_Store
+Thumbs.db
