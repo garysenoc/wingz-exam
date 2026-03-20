@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import timedelta
 
 from django.db.models import F, FloatField, Prefetch, QuerySet, Value
 from django.db.models.functions import ACos, Cos, Radians, Sin
@@ -54,7 +55,7 @@ def get_user_list() -> QuerySet[User]:
 
 def _todays_ride_events_prefetch() -> Prefetch:
     """Prefetch only RideEvents from the last 24 hours."""
-    cutoff = timezone.now() - timezone.timedelta(hours=24)
+    cutoff = timezone.now() - timedelta(hours=24)
     return Prefetch(
         "ride_events",
         queryset=RideEvent.objects.filter(

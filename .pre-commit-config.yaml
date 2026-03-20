@@ -15,14 +15,13 @@ repos:
         args: [--fix]
       - id: ruff-format
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.15.0
+  - repo: local
     hooks:
       - id: mypy
-        additional_dependencies:
-          - django-stubs
-          - djangorestframework-stubs
-        args: [--config-file=pyproject.toml]
+        name: mypy
+        entry: mypy rides/ --config-file=pyproject.toml
+        language: system
+        types: [python]
         pass_filenames: false
 
   - repo: https://github.com/commitizen-tools/commitizen

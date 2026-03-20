@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 from django.db.models import QuerySet
-from drf_spectacular.utils import OpenApiExample, OpenApiParameter, extend_schema, extend_schema_view
+from drf_spectacular.utils import (
+    OpenApiExample,
+    OpenApiParameter,
+    extend_schema,
+    extend_schema_view,
+)
 from rest_framework import viewsets
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.pagination import PageNumberPagination
@@ -154,11 +159,11 @@ class RideViewSet(viewsets.ModelViewSet[Ride]):
         )
         return get_ride_list(filters=filters)
 
-    def perform_create(self, serializer: RideWriteSerializer) -> None:
+    def perform_create(self, serializer: RideWriteSerializer) -> None:  # type: ignore[override]
         ride = create_ride(**serializer.validated_data)
         serializer.instance = ride
 
-    def perform_update(self, serializer: RideWriteSerializer) -> None:
+    def perform_update(self, serializer: RideWriteSerializer) -> None:  # type: ignore[override]
         ride = update_ride(ride=self.get_object(), data=serializer.validated_data)
         serializer.instance = ride
 

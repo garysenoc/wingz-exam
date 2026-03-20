@@ -14,11 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 from drf_spectacular.utils import OpenApiExample, extend_schema, inline_serializer
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework import serializers
 from rest_framework.authtoken.views import ObtainAuthToken
 
@@ -58,12 +59,12 @@ class TokenAuthView(ObtainAuthToken):
 TokenView = csrf_exempt(TokenAuthView.as_view())
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('rides.urls')),
-    path('api-token-auth/', TokenView, name='api_token_auth'),
-    path('api-auth/', include('rest_framework.urls')),
+    path("admin/", admin.site.urls),
+    path("api/", include("rides.urls")),
+    path("api-token-auth/", TokenView, name="api_token_auth"),
+    path("api-auth/", include("rest_framework.urls")),
     # Swagger / OpenAPI
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
 ]

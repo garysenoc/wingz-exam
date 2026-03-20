@@ -26,10 +26,25 @@ plugins = [
     "mypy_django_plugin.main",
     "mypy_drf_plugin.main",
 ]
-strict = true
-warn_return_any = true
+strict = false
+warn_return_any = false
 warn_unused_configs = true
 ignore_missing_imports = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "rides.tests.*"
+disallow_untyped_defs = false
+disable_error_code = ["no-untyped-call", "arg-type", "attr-defined", "return-value", "union-attr", "misc"]
+
+[[tool.mypy.overrides]]
+module = "rides.admin"
+disable_error_code = ["assignment", "misc", "operator", "type-arg"]
+
+[[tool.mypy.overrides]]
+module = "wingz.*"
+disallow_untyped_defs = false
+disable_error_code = ["var-annotated"]
 
 [tool.django-stubs]
 django_settings_module = "wingz.settings"

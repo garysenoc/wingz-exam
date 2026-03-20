@@ -4,18 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('rides', '0001_initial'),
+        ("rides", "0001_initial"),
     ]
 
     operations = [
         migrations.AddIndex(
-            model_name='ride',
-            index=models.Index(fields=['status', '-pickup_time'], name='ride_status_9d6478_idx'),
+            model_name="ride",
+            index=models.Index(fields=["status", "-pickup_time"], name="ride_status_9d6478_idx"),
         ),
         migrations.AddIndex(
-            model_name='rideevent',
-            index=models.Index(fields=['id_ride', '-created_at'], name='ride_event_id_ride_e49a39_idx'),
+            model_name="rideevent",
+            index=models.Index(
+                fields=["id_ride", "-created_at"], name="ride_event_id_ride_e49a39_idx"
+            ),
         ),
     ]
